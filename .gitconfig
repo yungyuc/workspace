@@ -7,4 +7,4 @@ unstage = reset HEAD --
 [include]
 path = .gitconfig_acct
 [push]
-	default = simple
+default = simple

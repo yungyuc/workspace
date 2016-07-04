@@ -1,0 +1,29 @@
+alias j=jobs
+alias h=history
+alias ll='ls -l'
+alias lla='ll -a'
+alias dfh='df -h'
+alias s='screen -r'
+alias sc=screen
+alias isc='HISTIGNORE=* screen'
+alias vi=vim
+alias gvimt='gvim --remote-tab-silent'
+alias chrome-allow-local='chrome --allow-file-access-from-files'
+
+alias quota='quota -s'
+ARCH=`uname`
+if [ $ARCH == "Linux" ]; then
+  alias ls='ls -F --color=auto'
+elif [ $ARCH == "FreeBSD" ]; then
+  alias ls='ls -FG'
+elif [ $ARCH == "Darwin" ]; then
+  alias ls='ls -FG'
+  alias gvim=mvim
+  alias dia=macdia
+  alias dia.orig=/Applications/Dia.app/Contents/Resources/bin/dia
+  alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+  unalias quota
+fi
+unset ARCH
+
+# vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2 tw=76:

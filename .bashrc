@@ -39,6 +39,7 @@ if [ "$TERM" != "dumb" ]; then
     export LSCOLORS="Exfxcxdxbxegedabagacad"
   fi
 fi
+unset ARCH
 
 # include more scripts.
 if [ -f ~/.bashrc_env ]; then source ~/.bashrc_env; fi
