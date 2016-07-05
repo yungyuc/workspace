@@ -41,11 +41,39 @@ if [ "$TERM" != "dumb" ]; then
 fi
 unset ARCH
 
+# path munge.
+namemunge () {
+  if ! echo ${!1} | egrep -q "(^|:)$2($|:)" ; then
+    if [ -z "${!1}" ] ; then
+      eval "$1=$2"
+    else
+      if [ "$3" == "after" ] ; then
+        eval "$1=\$$1:$2"
+      else
+        eval "$1=$2:\$$1"
+      fi
+    fi
+  fi
+  eval "export $1"
+}
+
+namemunge PATH /sbin
+namemunge PATH /usr/sbin
+namemunge PATH /usr/local/sbin
+namemunge PATH $HOME/bin
+namemunge PATH $HOME/self/bin
+namemunge PATH $HOME/opt/bin
+namemunge PATH $HOME/.local/bin
+if [ `uname` != "Darwin" ]; then
+  namemunge LD_LIBRARY_PATH ~/opt/lib
+else
+  namemunge DYLD_LIBRARY_PATH ~/opt/lib
+fi
+
 # include more scripts.
-if [ -f ~/.bashrc_env ]; then source ~/.bashrc_env; fi
 if [ -f ~/.bashrc_aliases ]; then source ~/.bashrc_aliases; fi
-if [ -f ~/.bashrc_path ]; then source ~/.bashrc_path; fi
 if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
+if [ -f ~/self/etc/dot_bashrc ]; then source ~/self/etc/dot_bashrc; fi
 
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
