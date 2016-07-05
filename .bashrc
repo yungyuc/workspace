@@ -84,6 +84,8 @@ if [ -f ~/opt/google-cloud-sdk/completion.bash.inc ]; then
   source ~/opt/google-cloud-sdk/completion.bash.inc
 fi
 
+alias gcei="gcloud compute instances"
+
 gceipof() {
   gcloud compute instances describe $1 | grep natIP | cut -d ' ' -f 6
 }
@@ -97,11 +99,26 @@ gce_set_instance_ip() {
 gce_create_instance() {
   instname=${1:-worker}
   machtype=${2:-n1-standard-1}
+  startup=$(mktemp -t gcp.startup.XXXXXXXXXX.sh) || exit
+  cat << EOF >> $startup
+apt-get install -y git
+rm -f clone_and_go
+wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/clone_and_go
+chmod a+rx clone_and_go
+mv clone_and_go /var/lib
+EOF
+  echo "Startup file:"
+  cat $startup | sed -e "s/^/  /"
   cmd="gcloud compute instances create $instname --machine-type $machtype \
     --zone asia-east1-c --image-family ubuntu-1404-lts \
-    --image-project ubuntu-os-cloud --boot-disk-size 10GB"
+    --image-project ubuntu-os-cloud --boot-disk-size 10GB \
+    --metadata-from-file startup-script=$startup"
   echo $cmd
-  exec $cmd
+  $cmd
+  rm -f $startup
+  cmd="gce_set_instance_ip $instname"
+  echo $cmd
+  $cmd
 }
 
 alias gcessh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
