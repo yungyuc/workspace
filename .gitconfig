@@ -7,4 +7,4 @@ unstage = reset HEAD --
 [push]
 default = simple
 [include]
-path = local/etc/dot_gitconfig
+path = self/etc/dot_gitconfig
