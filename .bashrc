@@ -1,19 +1,10 @@
 umask 002
 
-#[ -z "$PS1" ] && return
-
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-# set a fancy prompt (non-color, unless we know we "want" color)
-if [ -f ~/etc/git-prompt.bash ] && [ -n "which git" ] ; then
-  source ~/etc/git-prompt.bash
-  PS1='\u@\h[\!]:\w$(__git_ps1 "(%s)")\n\$ '
-else
-  PS1='\u@\h[\!]:\w\n\$ '
-fi
 # locale.
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -22,6 +13,14 @@ export LC_ALL=en_US.UTF-8
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 # set default editor.
 export EDITOR=vim
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+if [ -f ~/etc/git-prompt.bash ] && [ -n "which git" ] ; then
+  source ~/etc/git-prompt.bash
+  PS1='\u@\h[\!]:\w$(__git_ps1 "(%s)")\n\$ '
+else
+  PS1='\u@\h[\!]:\w\n\$ '
+fi
 
 # determine ls color.
 ARCH=`uname`
@@ -72,8 +71,35 @@ fi
 
 # include more scripts.
 if [ -f ~/.bashrc_aliases ]; then source ~/.bashrc_aliases; fi
-if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
 if [ -f ~/self/etc/dot_bashrc ]; then source ~/self/etc/dot_bashrc; fi
+
+# git
+if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
+
+# google-cloud-sdk
+if [ -d ~/opt/google-cloud-sdk/bin ]; then
+  namemunge PATH ~/opt/google-cloud-sdk/bin
+fi
+if [ -f ~/opt/google-cloud-sdk/completion.bash.inc ]; then
+  source ~/opt/google-cloud-sdk/completion.bash.inc
+fi
+
+gceipof() {
+  gcloud compute instances describe $1 | grep natIP | cut -d ' ' -f 6
+}
+
+gce_create_instance() {
+  instname=${1:-worker}
+  machtype=${2:-n1-standard-1}
+  gcloud compute instances create $instname --machine-type $machtype \
+    --zone asia-east1-c --image-family ubuntu-1404-lts \
+    --image-project ubuntu-os-cloud --boot-disk-size 10GB
+}
+
+set_gce_instance_ip() {
+  export GCE_INSTANCE_IP=`gceipof $1`
+  echo "\$GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
+}
 
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
