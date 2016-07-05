@@ -1,1 +1,55 @@
+# dotfiles
 .*
+
+# wildcards
+WORK*
+GAMBIT*
+oD-*
+
+# directories
+Applications/
+Audio/
+Desktop/
+Documents/
+Downloads/
+Downloaded*/
+Dropbox/
+Onedrive/
+Library/
+Movies/
+Music/
+NVIDIA*/
+PDF/
+Pictures/
+Public/
+PyCharm*/
+Templates/
+Ubuntu One/
+Videos/
+
+dirs/
+public_html/
+vgwork/
+vmscript/
+virtualboxes/
+
+# directory contents
+build/*
+collect/*
+document/*
+intel/*
+lib/*.pyc
+mnt/*
+opt/*
+tmp/*
+var/*
+vmware/*
+work/*
+
+# files
+default_id.lok
+hp-check.log
+postponed
+sent
+
+texmf/ls-R

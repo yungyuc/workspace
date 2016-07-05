@@ -50,4 +50,4 @@ if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
 
-# vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2 tw=76:
+# vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:

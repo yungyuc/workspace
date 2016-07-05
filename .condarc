@@ -1,0 +1,5 @@
+changeps1: true
+channels:
+  - defaults
+#  - https://conda.binstar.org/yungyuc
+#  - https://conda.binstar.org/asmeurer
