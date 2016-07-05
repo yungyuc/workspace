@@ -88,18 +88,23 @@ gceipof() {
   gcloud compute instances describe $1 | grep natIP | cut -d ' ' -f 6
 }
 
+gce_set_instance_ip() {
+  worker=${1:-worker}
+  export GCE_INSTANCE_IP=`gceipof $worker`
+  echo "\$GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
+}
+
 gce_create_instance() {
   instname=${1:-worker}
   machtype=${2:-n1-standard-1}
-  gcloud compute instances create $instname --machine-type $machtype \
+  cmd="gcloud compute instances create $instname --machine-type $machtype \
     --zone asia-east1-c --image-family ubuntu-1404-lts \
-    --image-project ubuntu-os-cloud --boot-disk-size 10GB
+    --image-project ubuntu-os-cloud --boot-disk-size 10GB"
+  echo $cmd
+  exec $cmd
 }
 
-set_gce_instance_ip() {
-  export GCE_INSTANCE_IP=`gceipof $1`
-  echo "\$GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
-}
+alias gcessh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
