@@ -6,6 +6,8 @@ WORK*
 GAMBIT*
 oD-*
 
+lib/*.pyc
+
 # directories
 Applications/
 Audio/
@@ -27,24 +29,22 @@ Templates/
 Ubuntu One/
 Videos/
 
+build/
+collect/
 dirs/
+document/
+intel/
+mnt/
+opt/
 public_html/
+self/
+tmp/
+var/
+vmware/
 vgwork/
 vmscript/
 virtualboxes/
-
-# directory contents
-build/*
-collect/*
-document/*
-intel/*
-lib/*.pyc
-mnt/*
-opt/*
-tmp/*
-var/*
-vmware/*
-work/*
+work/
 
 # files
 default_id.lok

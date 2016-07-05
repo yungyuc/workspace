@@ -1,10 +1,19 @@
 [alias]
-st = status
-ci = commit
-co = checkout
-glog = log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
-unstage = reset HEAD --
+	st = status
+	ci = commit
+	co = checkout
+	glog = log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+	unstage = reset HEAD --
+	vimdiff = difftool --tool=vim
+	gvimdiff = difftool --tool=gvim
+	mvimdiff = difftool --tool=mvim
 [push]
-default = simple
+	default = simple
+[difftool "vim"]
+	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
+[difftool "gvim"]
+	cmd = gvim -d \"$LOCAL\" \"$REMOTE\"
+[difftool "mvim"]
+	cmd = mvim -d \"$LOCAL\" \"$REMOTE\"
 [include]
-path = self/etc/dot_gitconfig
+	path = self/etc/dot_gitconfig
