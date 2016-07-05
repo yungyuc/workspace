@@ -60,10 +60,10 @@ namemunge () {
 namemunge PATH /sbin
 namemunge PATH /usr/sbin
 namemunge PATH /usr/local/sbin
-namemunge PATH $HOME/bin
-namemunge PATH $HOME/self/bin
 namemunge PATH $HOME/opt/bin
 namemunge PATH $HOME/.local/bin
+namemunge PATH $HOME/bin
+namemunge PATH $HOME/self/bin
 if [ `uname` != "Darwin" ]; then
   namemunge LD_LIBRARY_PATH ~/opt/lib
 else

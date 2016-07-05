@@ -11,5 +11,5 @@ inoremap <silent> <C-o> <C-o>:set lines=999<CR>
 inoremap <silent> <C-p> <C-p>:set lines=35<CR>
 
 if filereadable(expand('~/self/etc/dot_gvimrc'))
-  so ~/self/dot_gvimrc
+  so ~/self/etc/dot_gvimrc
 endif
