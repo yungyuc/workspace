@@ -127,6 +127,7 @@ EOF
 }
 
 alias gcessh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+alias gcescp="scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
