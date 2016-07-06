@@ -72,6 +72,7 @@ fi
 # include more scripts.
 if [ -f ~/.bashrc_aliases ]; then source ~/.bashrc_aliases; fi
 if [ -f ~/self/etc/dot_bashrc ]; then source ~/self/etc/dot_bashrc; fi
+if [ -f ~/gce/etc/gcerc ]; then source ~/gce/etc/gcerc; fi
 
 # conda.
 alias use.conda3="namemunge PATH ~/opt/conda3/bin"
@@ -80,55 +81,6 @@ if [ -d ~/opt/conda3/bin ]; then use.conda3; fi
 
 # git
 if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
-
-# google-cloud-sdk
-if [ -d ~/opt/google-cloud-sdk/bin ]; then
-  namemunge PATH ~/opt/google-cloud-sdk/bin
-fi
-if [ -f ~/opt/google-cloud-sdk/completion.bash.inc ]; then
-  source ~/opt/google-cloud-sdk/completion.bash.inc
-fi
-
-alias gcei="gcloud compute instances"
-
-gceipof() {
-  gcloud compute instances describe $1 | grep natIP | cut -d ' ' -f 6
-}
-
-gce_set_instance_ip() {
-  worker=${1:-worker}
-  export GCE_INSTANCE_IP=`gceipof $worker`
-  echo "GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
-}
-
-gce_create_instance() {
-  instname=${1:-worker}
-  machtype=${2:-n1-standard-1}
-  startup=$(mktemp -t gcp.startup.XXXXXXXXXX.sh) || exit
-  cat << EOF >> $startup
-timedatectl set-timezone Asia/Taipei
-apt-get install -y git build-essential liblapack-pic liblapack-dev
-rm -f clone_and_go
-wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/bootstrap-workspace.sh
-chmod a+rx bootstrap-workspace.sh
-mv bootstrap-workspace.sh /var/lib
-EOF
-  echo "Startup file:"
-  cat $startup | sed -e "s/^/  /"
-  cmd="gcloud compute instances create $instname --machine-type $machtype \
-    --zone asia-east1-c --image-family ubuntu-1404-lts \
-    --image-project ubuntu-os-cloud --boot-disk-size 10GB \
-    --metadata-from-file startup-script=$startup"
-  echo $cmd
-  $cmd
-  rm -f $startup
-  cmd="gce_set_instance_ip $instname"
-  echo $cmd
-  $cmd
-}
-
-alias gcessh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-alias gcescp="scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # account specific settings goes here.
 if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
