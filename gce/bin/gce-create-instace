@@ -1,6 +1,10 @@
 #!/bin/bash
 
 instname=$1
+if [ -z $instname ]; then
+  echo "Usage: `basename $0` <instance_name> [machine_type]"
+  exit
+fi
 machtype=${2:-n1-standard-1}
 startup=$(mktemp -t gcp.startup.XXXXXXXXXX.sh) || exit
 cat << EOF >> $startup
