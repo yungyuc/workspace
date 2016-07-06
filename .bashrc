@@ -73,6 +73,11 @@ fi
 if [ -f ~/.bashrc_aliases ]; then source ~/.bashrc_aliases; fi
 if [ -f ~/self/etc/dot_bashrc ]; then source ~/self/etc/dot_bashrc; fi
 
+# conda.
+alias use.conda3="namemunge PATH ~/opt/conda3/bin"
+alias use.conda2="namemunge PATH ~/opt/conda2/bin"
+if [ -d ~/opt/conda3/bin ]; then use.conda3; fi
+
 # git
 if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
 
