@@ -106,11 +106,11 @@ gce_create_instance() {
   machtype=${2:-n1-standard-1}
   startup=$(mktemp -t gcp.startup.XXXXXXXXXX.sh) || exit
   cat << EOF >> $startup
-apt-get install -y git
+apt-get install -y git build-essential liblapack-pic liblapack-dev
 rm -f clone_and_go
-wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/bootstrap-workspace
-chmod a+rx bootstrap-workspace
-mv bootstrap-workspace /var/lib
+wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/bootstrap-workspace.sh
+chmod a+rx bootstrap-workspace.sh
+mv bootstrap-workspace.sh /var/lib
 EOF
   echo "Startup file:"
   cat $startup | sed -e "s/^/  /"
