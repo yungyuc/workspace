@@ -1,0 +1,56 @@
+[ui]
+ssh = ssh -C
+
+[diff]
+git = True
+
+[extensions]
+hgext.mq=
+hgext.extdiff=
+hgext.hbisect=!
+hgext.bookmarks=
+hgext.share=
+hgext.graphlog=
+hgext.rebase=
+hgext.progress=
+
+[inotify]
+autostart = False
+
+[alias]
+latest = log --limit 3
+last = log --limit 1 -v
+
+[extdiff]
+# add new command that runs GNU diff(1) in 'context diff' mode
+cmd.cdiff = gdiff
+opts.cdiff = -Nprc5
+
+cmd.odiff = opendiff-w
+
+# add new command called vdiff, runs kdiff3
+cmd.vdiff = kdiff3
+
+# add new command called meld, runs meld (no need to name twice)
+cmd.meld = 
+
+# add new command called vimdiff, runs gvimdiff with DirDiff plugin
+#(see http://www.vim.org/scripts/script.php?script_id=102)
+# Non english user, be sure to put "let g:DirDiffDynamicDiffText = 1" in
+# your .vimrc
+cmd.vimdiff = vim
+opts.vimdiff = -f '+next' '+execute "DirDiff" fnameescape(argv(0)) fnameescape(argv(1))'
+
+cmd.gvimdiff = gvim
+opts.gvimdiff = -f '+next' '+execute "DirDiff" fnameescape(argv(0)) fnameescape(argv(1))'
+
+cmd.mvimdiff = mvim
+opts.mvimdiff = -f '+next' '+execute "DirDiff" fnameescape(argv(0)) fnameescape(argv(1))'
+
+cmd.p4diff = p4merge
+
+[tortoisehg]
+vdiff = meld
+editor = gvim
+
+%include ~/self/etc/dot_hgrc
