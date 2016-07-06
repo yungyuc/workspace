@@ -93,7 +93,7 @@ gceipof() {
 gce_set_instance_ip() {
   worker=${1:-worker}
   export GCE_INSTANCE_IP=`gceipof $worker`
-  echo "\$GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
+  echo "GCE_INSTANCE_IP=$GCE_INSTANCE_IP"
 }
 
 gce_create_instance() {
@@ -103,9 +103,9 @@ gce_create_instance() {
   cat << EOF >> $startup
 apt-get install -y git
 rm -f clone_and_go
-wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/clone_and_go
-chmod a+rx clone_and_go
-mv clone_and_go /var/lib
+wget -q https://raw.githubusercontent.com/yungyuc/workspace/master/bin/admin/bootstrap-workspace
+chmod a+rx bootstrap-workspace
+mv bootstrap-workspace /var/lib
 EOF
   echo "Startup file:"
   cat $startup | sed -e "s/^/  /"

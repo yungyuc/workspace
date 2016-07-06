@@ -4,4 +4,3 @@ rm -rf $scratch/*
 git clone http://github.com/yungyuc/workspace $scratch
 mv $scratch/.git ~/
 git checkout -- .
-source ~/.bashrc
