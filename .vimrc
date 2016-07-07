@@ -14,6 +14,13 @@ set ruler " show the cursor position all the time
 syntax on
 filetype plugin on
 
+" status line
+set laststatus=2
+set statusline=%f\ %h%w%m%r\ 
+set statusline+=%#warningmsg#
+set statusline+=%*
+set statusline+=%=%(%{getcwd()}\ %l,%c%V\ %=\ %P%)
+
 " search
 set hlsearch
 set showmatch
