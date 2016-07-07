@@ -16,10 +16,7 @@ filetype plugin on
 
 " status line
 set laststatus=2
-set statusline=%f\ %h%w%m%r\ 
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%=%(%{getcwd()}\ %l,%c%V\ %=\ %P%)
+set statusline=%f\ %h%w%m%r\ %#warningmsg#%*%=%(%{getcwd()}\ %l,%c%V\ %=\ %P%)
 
 " search
 set hlsearch
