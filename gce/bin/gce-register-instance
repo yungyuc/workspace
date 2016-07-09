@@ -14,4 +14,4 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
   $instip:/tmp/host_key.pub $instdir/known_hosts
 
-# vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:
+# vim: set et nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:

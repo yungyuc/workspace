@@ -25,4 +25,4 @@ echo $cmd
 $cmd
 rm -f $startup
 
-# vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:
+# vim: set et nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:
