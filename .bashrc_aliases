@@ -9,6 +9,7 @@ alias isc='HISTIGNORE=* screen'
 alias vi=vim
 alias gvimt='gvim --remote-tab-silent'
 alias chrome-allow-local='chrome --allow-file-access-from-files'
+alias resource-bash='source ~/.bashrc; hash -r'
 
 alias quota='quota -s'
 ARCH=`uname`
