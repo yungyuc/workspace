@@ -237,5 +237,9 @@ let g:miniBufExplModSelTarget = 1
 let g:tex_flavor='latex'
 
 if filereadable(expand('~/self/etc/dot_vimrc'))
-  so ~/self/dot_vimrc
+  so ~/self/etc/dot_vimrc
+endif
+
+if filereadable(expand('~/.vimrc_local'))
+  so ~/.vimrc_local
 endif

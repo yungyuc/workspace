@@ -17,3 +17,4 @@
 	cmd = mvim -d \"$LOCAL\" \"$REMOTE\"
 [include]
 	path = self/etc/dot_gitconfig
+	path = .gitconfig_local
