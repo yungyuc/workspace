@@ -43,7 +43,7 @@ au FileType gitcommit set noai nu tw=999
 au FileType python set ai et nu sw=4 ts=4 tw=79 omnifunc=pythoncomplete#Complete
 au FileType pyrex set ai et nu sw=4 ts=4 tw=79 omnifunc=pythoncomplete#Complete
 au FileType rst set ai et nu sw=2 ts=2
-au FileType tex set ai et nu sw=2 ts=2 tw=79
+au FileType tex set ai et nu sw=2 ts=2
 au FileType c set ai noet nu sw=8 ts=8
 au FileType cpp set ai noet nu sw=8 ts=8
 au FileType cuda set ai noet nu sw=8 ts=8
