@@ -17,9 +17,9 @@ export EDITOR=vim
 # set a fancy prompt (non-color, unless we know we "want" color)
 if [ -f ~/etc/git-prompt.bash ] && [ -n "which git" ] ; then
   source ~/etc/git-prompt.bash
-  PS1='\u@\h \D{%Y-%m-%d %T} [\!]:\w$(__git_ps1 "(%s)")\n\$ '
+  PS1='\u@\h \D{%Y-%m-%d %T} [\!]\n\w $(__git_ps1 "(%s)")\n\$ '
 else
-  PS1='\u@\h \D{%Y-%m-%d %T} [\!]:\w\n\$ '
+  PS1='\u@\h \D{%Y-%m-%d %T} [\!]\n\w\n\$ '
 fi
 
 # determine ls color.
