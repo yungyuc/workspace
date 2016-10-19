@@ -1,3 +1,5 @@
+# Add two functions to shell namespace: namemunge() and source_if()
+
 umask 002
 
 # don't put duplicate lines in the history. See bash(1) for more options
@@ -23,22 +25,21 @@ else
 fi
 
 # determine ls color.
-ARCH=`uname`
+arch=`uname`
 if [ "$TERM" != "dumb" ]; then
-  if [ $ARCH == "Linux" ]; then
+  if [ $arch == "Linux" ]; then
     if [ -f ~/.dir_colors ]; then
       eval "`dircolors -b ~/.dir_colors`"
     else
       eval "`dircolors -b`"
     fi
-  elif [ $ARCH == "FreeBSD" ]; then
+  elif [ $arch == "FreeBSD" ]; then
     export LSCOLORS="Exfxcxdxbxegedabagacad"
-  elif [ $ARCH == "Darwin" ]; then
+  elif [ $arch == "Darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS="Exfxcxdxbxegedabagacad"
   fi
 fi
-unset ARCH
 
 # path munge.
 namemunge () {
@@ -63,20 +64,32 @@ namemunge PATH $HOME/opt/bin
 namemunge PATH $HOME/.local/bin
 namemunge PATH $HOME/bin
 namemunge PATH $HOME/self/bin
-if [ `uname` != "Darwin" ]; then
+if [ $arch != "Darwin" ]; then
   namemunge LD_LIBRARY_PATH ~/opt/lib
 else
   namemunge DYLD_LIBRARY_PATH ~/opt/lib
 fi
 
-# include more scripts.
-if [ -f ~/.bashrc_aliases ]; then source ~/.bashrc_aliases; fi
-if [ -f ~/self/etc/dot_bashrc ]; then source ~/self/etc/dot_bashrc; fi
+source_if () {
+  test -f "$1" && source "$1"
+}
+
+# source_if more scripts.
+source_if ~/.bashrc_aliases
+source_if ~/self/etc/dot_bashrc
 
 # git
-if [ -f ~/etc/git-completion.bash ]; then source ~/etc/git-completion.bash; fi
+source_if ~/etc/git-completion.bash
+
+# docker
+if [ $arch == "Darwin" ]; then
+  docker_etc=/Applications/Docker.app/Contents/Resources/etc/
+fi
+source_if ${docker_etc}/docker.bash-completion
+source_if ${docker_etc}/docker-machine.bash-completion
+source_if ${docker_etc}/docker-compose.bash-completion
 
 # account specific settings goes here.
-if [ -f ~/.bash_acct ]; then source ~/.bash_acct; fi
+source_if ~/.bash_acct
 
 # vim: set et nu nobomb fenc=utf8 ft=sh ff=unix sw=2 ts=2:
