@@ -104,10 +104,6 @@ function ToggleWrap()
 endfunction
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
-" tab label
-if has("gui")
-  set guitablabel=%N:%t\ %M
-endif
 function MyTabLine()
   let s = '' " complete tabline goes here
   " loop through each tab page
@@ -197,8 +193,10 @@ if !has("gui")
   call MapTabNumber("<Esc>", "")
 else
   if has("gui_macvim")
+    set guitablabel=%N:%t\ %M
     call MapTabNumber("<D-", ">")
   else
+    set guitablabel=%f
     call MapTabNumber("<M-", ">")
   endif
 endif
