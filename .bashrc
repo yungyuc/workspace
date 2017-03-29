@@ -57,6 +57,11 @@ namemunge () {
   eval "export $1"
 }
 
+# see http://stackoverflow.com/a/370192/1805420
+nameremove () {
+  eval "export $1=$(echo -n ${!1} | awk -v RS=: -v ORS=: -v var="$2" '$0 != var' | sed 's/:*$//')"
+}
+
 namemunge PATH /sbin
 namemunge PATH /usr/sbin
 namemunge PATH /usr/local/sbin
