@@ -66,6 +66,7 @@ namemunge PATH /sbin
 namemunge PATH /usr/sbin
 namemunge PATH /usr/local/sbin
 namemunge PATH $HOME/opt/bin
+namemunge PATH $HOME/opt/local/bin
 namemunge PATH $HOME/.local/bin
 namemunge PATH $HOME/bin
 namemunge PATH $HOME/self/bin
