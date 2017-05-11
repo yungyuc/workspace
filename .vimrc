@@ -3,6 +3,8 @@ set nocompatible
 set modeline
 set modelines=10
 set noai bs=2 sw=2
+set colorcolumn=+1
+highlight ColorColumn ctermbg=darkblue
 
 " format
 set ff=unix

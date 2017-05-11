@@ -4,6 +4,7 @@ set guitablabel^=%N\
 set visualbell
 set background=dark
 colors koehler
+highlight ColorColumn guibg=darkolivegreen
 
 " key bind for window height.
 noremap <silent> <C-o> :set lines=999<CR>
