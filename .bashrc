@@ -90,7 +90,7 @@ source_if ~/etc/git-completion.bash
 
 # docker
 if [ $arch == "Darwin" ]; then
-  docker_etc=/Applications/Docker.app/Contents/Resources/etc/
+  docker_etc=/Applications/Docker.app/Contents/Resources/etc
 fi
 source_if ${docker_etc}/docker.bash-completion
 source_if ${docker_etc}/docker-machine.bash-completion
