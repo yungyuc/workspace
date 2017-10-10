@@ -41,13 +41,13 @@ set ssop=blank,buffers,curdir,folds,help,options,resize,tabpages,winsize
 
 " autocmd and syntax.
 au FileType make set ai nu sw=8 ts=8
-au FileType gitcommit set noai nu tw=999
+au FileType gitcommit set noai nu tw=0
 au FileType python set ai et nu sw=4 ts=4 tw=79 omnifunc=pythoncomplete#Complete
 au FileType pyrex set ai et nu sw=4 ts=4 tw=79 omnifunc=pythoncomplete#Complete
 au FileType rst set ai et nu sw=2 ts=2
 au FileType tex set ai et nu sw=2 ts=2
-au FileType c set ai noet nu sw=8 ts=8
-au FileType cpp set ai noet nu sw=8 ts=8
+au FileType c set ai noet nu sw=8 ts=8 tw=0
+au FileType cpp set ai noet nu sw=8 ts=8 tw=0
 au FileType cuda set ai noet nu sw=8 ts=8
 au FileType sh set ai et nu sw=2 ts=2 tw=79
 au FileType csh set ai et nu sw=2 ts=2 tw=79
@@ -57,7 +57,7 @@ au FileType htmldjango set ai et nu sw=4 ts=4
 au FileType css set ai et nu sw=4 ts=4
 au FileType ruby set ai et nu sw=4 ts=4 tw=79
 au FileType fortran set ai et nu sw=3 ts=3 tw=72
-au FileType vim set ai nu
+au FileType vim set ai nu tw=0
 au BufRead *.spg set ft=fortran
 au BufRead *.wiki set ai et nu ft=creole
 
