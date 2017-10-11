@@ -16,6 +16,18 @@ set ruler " show the cursor position all the time
 syntax on
 filetype plugin on
 
+" Show trailing whitespaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" Possible white space match groups.
+" The following alternative may be less obtrusive.
+"highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+" Try the following if your GUI uses a dark background.
+"highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+\%#\@<!$/
+nnoremap <Leader>wn :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
+nnoremap <Leader>wf :match<CR>
+
 " status line
 set laststatus=2
 set statusline=%f\ %h%w%m%r\ %#warningmsg#%*%=%(%{getcwd()}\ %l,%c%V\ %=\ %P%)
