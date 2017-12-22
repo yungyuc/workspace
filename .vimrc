@@ -24,8 +24,10 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 " Try the following if your GUI uses a dark background.
 "highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+\%#\@<!$/
-nnoremap <Leader>wn :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
+"match ExtraWhitespace /\s\+\%#\@<!$/
+match ExtraWhitespace /\s\+$/
+"nnoremap <Leader>wn :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
+nnoremap <Leader>wn :match ExtraWhitespace /\s\+/<CR>
 nnoremap <Leader>wf :match<CR>
 
 " status line
