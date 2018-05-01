@@ -20,8 +20,10 @@ filetype plugin on
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd CursorMovedI * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " Possible white space match groups.
