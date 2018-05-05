@@ -88,6 +88,9 @@ source_if ~/self/etc/dot_bashrc
 # git
 source_if ~/etc/git-completion.bash
 
+# tmux
+source_if ~/etc/tmux-completion.bash
+
 # docker
 if [ $arch == "Darwin" ]; then
   docker_etc=/Applications/Docker.app/Contents/Resources/etc
