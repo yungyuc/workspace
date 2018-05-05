@@ -127,6 +127,9 @@ function ToggleWrap()
 endfunction
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
+"hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+"hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Cyan ctermbg=Magenta
 function MyTabLine()
   let s = '' " complete tabline goes here
   " loop through each tab page
