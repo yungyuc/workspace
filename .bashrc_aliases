@@ -5,7 +5,6 @@ alias lla='ll -a'
 alias dfh='df -h'
 alias s='screen -r'
 alias sc=screen
-alias t='tmux attach-session'
 alias vi=vim
 alias gvimt='gvim --remote-tab-silent'
 alias chrome-allow-local='chrome --allow-file-access-from-files'

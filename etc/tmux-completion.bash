@@ -184,20 +184,27 @@ _tmux() {
 complete -F _tmux tmux
 
 # completion for the attaching shorthand
+alias t='tmux attach-session'
 _tmux_t() {
     local cur prev
-    local i cmd cmd_index option option_index
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-
     case "$prev" in
         -t) _tmux_complete_session "${cur}" ;;
         *) options="-t -d" ;;
     esac
-
     return 0
-
 }
 complete -F _tmux_t t
+
+alias tt='tmux attach-session -t'
+_tmux_tt() {
+    local cur prev
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    _tmux_complete_session "${cur}"
+    return 0
+}
+complete -F _tmux_tt tt
 
 # END tmux completion
