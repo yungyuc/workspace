@@ -185,6 +185,7 @@ complete -F _tmux tmux
 
 # completion for the attaching shorthand
 alias t='tmux attach-session'
+alias tcc='tmux -CC attach-session'
 _tmux_t() {
     local cur prev
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -196,8 +197,10 @@ _tmux_t() {
     return 0
 }
 complete -F _tmux_t t
+complete -F _tmux_t tcc
 
 alias tt='tmux attach-session -t'
+alias ttcc='tmux -CC attach-session -t'
 _tmux_tt() {
     local cur prev
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -206,5 +209,6 @@ _tmux_tt() {
     return 0
 }
 complete -F _tmux_tt tt
+complete -F _tmux_tt ttcc
 
 # END tmux completion
