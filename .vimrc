@@ -157,7 +157,7 @@ function MyTabLine()
       elseif getbufvar( b, "&buftype" ) == 'quickfix'
         let n .= '[Q]'
       else
-        let n .= pathshorten(bufname(b))
+        let n .= fnamemodify(bufname(b), ':p:t')
       endif
       " check and ++ tab's &modified count
       if getbufvar( b, "&modified" )
