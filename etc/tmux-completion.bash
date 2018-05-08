@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+tfixssh() {
+    eval $(tmux show-env -s | grep SSH)
+}
+
 # tmux completion
 # See: http://www.debian-administration.org/articles/317 for how to write more.
 # Usage: Put "source bash_completion_tmux.sh" into your .bashrc
