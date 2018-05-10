@@ -188,31 +188,16 @@ _tmux() {
 complete -F _tmux tmux
 
 # completion for the attaching shorthand
-alias t='tmux attach-session'
-alias tcc='tmux -CC attach-session'
+alias t='tmux attach-session -t'
+alias tcc='tmux -CC attach-session -t'
 _tmux_t() {
-    local cur prev
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    case "$prev" in
-        -t) _tmux_complete_session "${cur}" ;;
-        *) options="-t -d" ;;
-    esac
-    return 0
-}
-complete -F _tmux_t t
-complete -F _tmux_t tcc
-
-alias tt='tmux attach-session -t'
-alias ttcc='tmux -CC attach-session -t'
-_tmux_tt() {
     local cur prev
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
     _tmux_complete_session "${cur}"
     return 0
 }
-complete -F _tmux_tt tt
-complete -F _tmux_tt ttcc
+complete -F _tmux_t t
+complete -F _tmux_t tcc
 
 # END tmux completion
