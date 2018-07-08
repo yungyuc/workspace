@@ -1,6 +1,4 @@
-# Add two functions to shell namespace: namemunge() and source_if()
-
-umask 002
+umask 022
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
