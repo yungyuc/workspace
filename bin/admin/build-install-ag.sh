@@ -8,7 +8,7 @@ ag_url=https://github.com/ggreer/the_silver_searcher/archive/2.1.0.tar.gz
 
 cd ~/tmp
 rm -rf $ag_dn $ag_fn
-wget -q $ag_url
+curl -sSL -o $ag_fn $ag_url
 tar xf $ag_fn
 
 cd $ag_dn

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # Copyright (C) 2011 Yung-Yu Chen <yyc@solvcon.net>.
 
@@ -11,7 +11,7 @@ cmake_url=https://cmake.org/files/v$cmake_vminor/$cmake_fn
 mkdir -p ~/tmp
 cd ~/tmp
 rm -rf $cmake_dn $cmake_fn
-wget -q $cmake_url
+curl -sSL -o $cmake_fn $cmake_url
 tar xf $cmake_fn
 
 cd $cmake_dn
