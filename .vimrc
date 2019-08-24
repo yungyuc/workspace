@@ -218,11 +218,10 @@ if !has("gui")
   call EnableTerminalMeta(range(48,57))
   call MapTabNumber("<Esc>", "")
 else
+  set guitablabel=%N:%t\ %M
   if has("gui_macvim")
-    set guitablabel=%N:%t\ %M
     call MapTabNumber("<D-", ">")
   else
-    set guitablabel=%f
     call MapTabNumber("<M-", ">")
   endif
 endif

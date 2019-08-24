@@ -1,6 +1,5 @@
 set columns=85 lines=25
 set guioptions=gmirte
-set guitablabel^=%N\ 
 set visualbell
 set background=dark
 colors koehler
