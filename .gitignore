@@ -9,7 +9,7 @@ oD-*
 lib/*.pyc
 
 # directories
-Applications/
+Applications*/
 Audio/
 Desktop/
 Documents/
@@ -24,6 +24,7 @@ Movies/
 Music/
 NVIDIA*/
 PDF/
+Parallels/
 Pictures/
 Public/
 PyCharm*/
