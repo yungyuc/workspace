@@ -63,6 +63,7 @@ nameremove () {
 
 namemunge PATH /sbin
 namemunge PATH /usr/sbin
+nameremove PATH /opt/homebrew/bin
 namemunge PATH /opt/homebrew/bin
 namemunge PATH /usr/local/sbin
 namemunge PATH $HOME/opt/bin
