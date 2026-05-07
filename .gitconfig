@@ -12,9 +12,9 @@
 [difftool "vim"]
 	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
 [difftool "gvim"]
-	cmd = gvim -d \"$LOCAL\" \"$REMOTE\"
+	cmd = gvim -f -d \"$LOCAL\" \"$REMOTE\"
 [difftool "mvim"]
-	cmd = mvim -d \"$LOCAL\" \"$REMOTE\"
+	cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
 [include]
 	path = self/etc/dot_gitconfig
 	path = .gitconfig_local
