@@ -45,6 +45,7 @@ mnt/
 opt/
 public_html/
 self/
+/snap/
 tmp/
 var/
 vmware/
@@ -52,6 +53,7 @@ vgwork/
 vmscript/
 virtualboxes/
 work/
+/?work/
 hack/
 
 # files

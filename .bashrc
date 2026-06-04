@@ -82,9 +82,17 @@ source_if () {
   test -f "$1" && source "$1"
 }
 
+loadsshenv() {
+  local p="${1:-$SSHENVPATH}"
+  if [ -z "$p" ]; then
+    echo "Warning: SSHENVPATH is not set; not loading SSH environment" >&2
+    return 1
+  fi
+  source "$p"
+}
+
 # source_if more scripts.
 source_if ~/.bashrc_aliases
-source_if ~/self/etc/dot_bashrc
 
 # git
 source_if ~/etc/git-completion.bash
